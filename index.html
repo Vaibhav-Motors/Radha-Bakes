@@ -2,12 +2,16 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
+    <meta name="theme-color" content="#ff6b9d">
+    <meta name="description" content="Radha Bakes - Homemade cakes, cupcakes & desserts. Fresh, hygienic, made with love. Order 1 day prior.">
     <title>Radha Bakes 🎂 | Homemade With Love</title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -20,86 +24,165 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'float-delayed': 'float 6s ease-in-out 3s infinite',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'toast-in': 'slideIn 0.3s ease-out forwards',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.4s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.3s ease-out forwards',
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': {
-                                transform: 'translateY(0)'
-                            },
-                            '50%': {
-                                transform: 'translateY(-20px)'
-                            },
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         },
-                        slideIn: {
-                            from: {
-                                transform: 'translateX(100%)',
-                                opacity: '0'
-                            },
-                            to: {
-                                transform: 'translateX(0)',
-                                opacity: '1'
-                            },
+                        slideUp: {
+                            from: { transform: 'translateY(30px)', opacity: '0' },
+                            to: { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideInRight: {
+                            from: { transform: 'translateX(100%)', opacity: '0' },
+                            to: { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            from: { opacity: '0' },
+                            to: { opacity: '1' },
                         },
                     },
                 },
             },
         };
     </script>
+
     <style>
-        /* ======== Glass Effects ======== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #fef6f9;
+            color: #1f2937;
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .dark body {
+            background-color: #1e1e2a;
+            color: #f3f4f6;
+        }
+
+        .bg-gradient-mesh {
+            background:
+                radial-gradient(at 40% 20%, hsla(330, 100%, 74%, 0.25) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(270, 100%, 70%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(340, 100%, 76%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(260, 100%, 70%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(280, 100%, 70%, 0.2) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(320, 100%, 70%, 0.2) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
         .glass {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
         .dark .glass {
             background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
+
         .dark .glass-card {
             background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .dark .glass-strong {
+            background: rgba(30, 30, 30, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         .text-gradient {
             background: linear-gradient(135deg, #ff6b9d 0%, #c084fc 50%, #fbbf24 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* ======== Mesh Background with Solid Fallback ======== */
-        body {
-            background-color: #fef6f9; /* Soft pink base for light mode */
-        }
-        .dark body {
-            background-color: #1e1e2a; /* Dark base for dark mode */
-        }
-        .bg-gradient-mesh {
-            background:
-                radial-gradient(at 40% 20%, hsla(330, 100%, 74%, 0.3) 0px, transparent 50%),
-                radial-gradient(at 80% 0%, hsla(270, 100%, 70%, 0.3) 0px, transparent 50%),
-                radial-gradient(at 0% 50%, hsla(340, 100%, 76%, 0.3) 0px, transparent 50%),
-                radial-gradient(at 80% 50%, hsla(260, 100%, 70%, 0.3) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, hsla(280, 100%, 70%, 0.3) 0px, transparent 50%),
-                radial-gradient(at 80% 100%, hsla(320, 100%, 70%, 0.3) 0px, transparent 50%);
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c084fc 100%);
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ======== Hover Effects & Components ======== */
-        .cake-hover:hover {
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(255, 107, 157, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
             transform: translateY(-8px) rotate(1deg);
-            box-shadow: 0 25px 50px -12px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(255, 107, 157, 0.3);
         }
+
+        .card-hover:active {
+            transform: translateY(-4px) rotate(0.5deg);
+        }
+
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: transparent;
@@ -108,85 +191,295 @@
             background: linear-gradient(to bottom, #ff6b9d, #c084fc);
             border-radius: 10px;
         }
+
         .blob {
             position: absolute;
-            filter: blur(40px);
-            opacity: 0.6;
-            animation: float 10s ease-in-out infinite;
+            filter: blur(60px);
+            opacity: 0.5;
+            pointer-events: none;
+            will-change: transform;
         }
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
+
+        .scroll-mt-header {
+            scroll-margin-top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-mt-header {
+                scroll-margin-top: 4rem;
             }
-            to {
-                transform: translateX(0);
-                opacity: 1;
+
+            .blob {
+                filter: blur(40px);
+                opacity: 0.4;
+            }
+
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            input, textarea, select {
+                font-size: 16px;
             }
         }
-        .toast-animate {
-            animation: slideIn 0.3s ease-out forwards;
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
         }
-        .cart-item {
-            transition: all 0.2s ease;
+
+        .toast-enter {
+            animation: slideInRight 0.3s ease-out forwards;
         }
-        .cart-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+
+        .modal-content {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-hidden {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+        }
+
+        .modal-visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .cart-panel {
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn {
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c084fc 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px -3px rgba(255, 107, 157, 0.4);
+        }
+
+        .qty-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: #e5e7eb;
+            font-weight: 700;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .dark .qty-btn {
+            background: #374151;
+        }
+
+        .qty-btn:hover {
+            background: #d1d5db;
+        }
+
+        .qty-btn:active {
+            transform: scale(0.9);
+        }
+
+        .mobile-menu-enter {
+            animation: slideUp 0.3s ease-out forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.05s; }
+        .stagger-2 { animation-delay: 0.1s; }
+        .stagger-3 { animation-delay: 0.15s; }
+        .stagger-4 { animation-delay: 0.2s; }
+
+        :focus-visible {
+            outline: 2px solid #ff6b9d;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background: rgba(255, 107, 157, 0.3);
+            color: inherit;
+        }
+
+        .hero-image-wrapper {
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .hero-card-inner {
+            transform: rotate(2deg);
+            transition: transform 0.5s ease;
+            max-width: 100%;
+        }
+
+        .hero-card-inner:hover {
+            transform: rotate(0deg);
+        }
+
+        .grid {
+            min-width: 0;
+        }
+
+        .grid > * {
+            min-width: 0;
+        }
+
+        h1, h2, h3, h4, p {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .hero-heading {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            overflow-wrap: break-word;
+        }
+
+        @media (min-width: 640px) {
+            .hero-heading {
+                font-size: clamp(2.5rem, 6vw, 5rem);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-heading {
+                font-size: clamp(3rem, 5vw, 7rem);
+            }
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -1rem;
+            left: -0.5rem;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .floating-card {
+                bottom: -2rem;
+                left: -2rem;
+            }
+        }
+
+        /* ===== Image Styles ===== */
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .group:hover .product-img {
+            transform: scale(1.08);
+        }
+
+        .img-container {
+            overflow: hidden;
+            border-radius: inherit;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .custom-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .glass-card:hover .custom-img {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 dark:text-gray-100 transition-colors duration-300 bg-gradient-mesh min-h-screen custom-scrollbar">
+<body class="bg-gradient-mesh custom-scrollbar">
 
     <!-- ==================== NAVBAR ==================== -->
-    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-2 cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})" role="button" tabindex="0" aria-label="Radha Bakes Home">
-                    <span class="text-4xl" aria-hidden="true">🎂</span>
-                    <div class="flex flex-col">
-                        <span class="font-display font-bold text-2xl tracking-tight text-gradient leading-none">Radha Bakes</span>
-                        <span class="text-xs text-pink-500 font-medium tracking-widest">HOMEMADE WITH LOVE</span>
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center gap-2 cursor-pointer select-none" onclick="window.scrollTo({top:0,behavior:'smooth'})" role="button" tabindex="0" aria-label="Radha Bakes Home">
+                    <span class="text-3xl md:text-4xl" aria-hidden="true">🎂</span>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-display font-bold text-xl md:text-2xl tracking-tight text-gradient leading-none truncate">Radha Bakes</span>
+                        <span class="text-[10px] md:text-xs text-pink-500 font-semibold tracking-widest uppercase">Homemade With Love</span>
                     </div>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#menu" class="font-medium hover:text-pink-500 transition-colors">Menu</a>
-                    <a href="#custom" class="font-medium hover:text-pink-500 transition-colors">Custom</a>
-                    <a href="#flavors" class="font-medium hover:text-pink-500 transition-colors">Flavors</a>
-                    <a href="#contact" class="font-medium hover:text-pink-500 transition-colors">Contact</a>
+                <div class="hidden md:flex items-center gap-6 lg:gap-8">
+                    <a href="#menu" class="font-medium hover:text-pink-500 transition-colors py-2">Menu</a>
+                    <a href="#custom" class="font-medium hover:text-pink-500 transition-colors py-2">Custom</a>
+                    <a href="#flavors" class="font-medium hover:text-pink-500 transition-colors py-2">Flavors</a>
+                    <a href="#contact" class="font-medium hover:text-pink-500 transition-colors py-2">Contact</a>
 
-                    <button onclick="toggleDark()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle dark mode">
-                        <span id="theme-icon">🌙</span>
+                    <button onclick="toggleDark()" class="p-2.5 rounded-full hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors" aria-label="Toggle dark mode">
+                        <span id="theme-icon" class="text-lg">🌙</span>
                     </button>
 
-                    <button onclick="toggleCart()" class="relative p-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-400 text-white hover:shadow-lg hover:scale-110 transition-all" aria-label="Open cart">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    <button onclick="toggleCart()" class="relative p-2.5 rounded-full btn-primary shadow-lg hover:shadow-xl" aria-label="Open cart">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                         </svg>
-                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
                     </button>
                 </div>
 
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false" id="mobile-menu-btn">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <div class="flex md:hidden items-center gap-2">
+                    <button onclick="toggleCart()" class="relative p-2.5 rounded-full btn-primary" aria-label="Open cart">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-yellow-400 text-black text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-lg hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors" aria-label="Toggle menu" aria-expanded="false" id="mobile-menu-btn" aria-controls="mobile-menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon-open">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon-close">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden glass border-t">
-            <div class="px-4 pt-2 pb-4 space-y-2">
-                <a href="#menu" onclick="closeMobileMenu()" class="block py-2 hover:text-pink-500 transition-colors">Menu</a>
-                <a href="#custom" onclick="closeMobileMenu()" class="block py-2 hover:text-pink-500 transition-colors">Custom</a>
-                <a href="#flavors" onclick="closeMobileMenu()" class="block py-2 hover:text-pink-500 transition-colors">Flavors</a>
-                <a href="#contact" onclick="closeMobileMenu()" class="block py-2 hover:text-pink-500 transition-colors">Contact</a>
-                <div class="flex items-center gap-3 pt-2 border-t border-gray-200 dark:border-gray-700">
-                    <button onclick="toggleDark()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm" aria-label="Toggle dark mode">
-                        <span id="theme-icon-mobile">🌙</span>
-                    </button>
-                    <button onclick="toggleCart(); closeMobileMenu();" class="p-2 rounded-full bg-gradient-to-r from-pink-400 to-purple-400 text-white text-sm" aria-label="Open cart">
-                        🛒 Cart
+        <div id="mobile-menu" class="hidden md:hidden glass-strong border-t border-white/20 dark:border-white/10" role="menu">
+            <div class="px-4 pt-3 pb-5 space-y-1">
+                <a href="#menu" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-pink-50 dark:hover:bg-pink-900/20 hover:text-pink-500 transition-colors font-medium" role="menuitem">🍰 Menu</a>
+                <a href="#custom" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-pink-50 dark:hover:bg-pink-900/20 hover:text-pink-500 transition-colors font-medium" role="menuitem">🎨 Custom Orders</a>
+                <a href="#flavors" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-pink-50 dark:hover:bg-pink-900/20 hover:text-pink-500 transition-colors font-medium" role="menuitem">🌈 Flavors</a>
+                <a href="#contact" onclick="closeMobileMenu()" class="block px-4 py-3 rounded-xl hover:bg-pink-50 dark:hover:bg-pink-900/20 hover:text-pink-500 transition-colors font-medium" role="menuitem">💬 Contact</a>
+                <div class="pt-3 mt-2 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                    <span class="text-sm text-gray-500 dark:text-gray-400 px-4">Appearance</span>
+                    <button onclick="toggleDark()" class="flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors" aria-label="Toggle dark mode">
+                        <span id="theme-icon-mobile" class="text-lg">🌙</span>
+                        <span class="text-sm font-medium" id="theme-label-mobile">Dark Mode</span>
                     </button>
                 </div>
             </div>
@@ -194,68 +487,62 @@
     </nav>
 
     <!-- ==================== HERO SECTION ==================== -->
-    <section class="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div class="blob bg-pink-300 w-72 h-72 rounded-full top-20 -left-20"></div>
-        <div class="blob bg-purple-300 w-96 h-96 rounded-full bottom-0 -right-20"></div>
+    <section class="relative pt-24 md:pt-32 pb-12 md:pb-20 px-4 overflow-hidden" aria-label="Hero">
+        <div class="blob bg-pink-300 w-64 h-64 md:w-72 md:h-72 rounded-full top-16 -left-16 md:top-20 md:-left-20"></div>
+        <div class="blob bg-purple-300 w-72 h-72 md:w-96 md:h-96 rounded-full bottom-0 -right-16 md:-right-20"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 text-center lg:text-left">
-                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass text-sm font-medium">
+            <div class="grid lg:grid-cols-2 gap- md:gap-12 items-center">
+                <div class="space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1 min-w-0">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium mx-auto lg:mx-0">
                         <span class="animate-pulse" aria-hidden="true">✨</span>
                         <span>Homemade with Love • Order 1 Day Prior</span>
                     </div>
 
-                    <h1 class="font-display font-extrabold text-5xl lg:text-7xl leading-tight">
-                        Homemade <br>
-                        <span class="text-gradient">With Love</span> 💕
+                    <h1 class="font-display font-extrabold hero-heading">
+                        Radha Bakes  <br>
+                        <span class="text-gradient">With Love</span> <span class="inline-block animate-pulse-slow">💕</span>
                     </h1>
 
-                    <p class="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto lg:mx-0">
+                    <p class="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                         Fresh ingredients, hygienic kitchen, and that homemade taste you can't resist. Radha Bakes — where every bite feels like a warm hug! 🧁
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#menu" class="px-8 py-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold text-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2">
-                            Order Now 🛒
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
+                        <a href="#menu" class="px-6 md:px-8 py-3.5 md:py-4 rounded-full btn-primary text-base md:text-lg flex items-center justify-center gap-2">
+                            Order Now <span aria-hidden="true">🛒</span>
                         </a>
-                        <a href="https://wa.me/918087267039?text=Hi%20Radha!%20I%20want%20to%20enquire%20about%20custom%20cakes%20🎂" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-full glass font-bold text-lg hover:bg-white/40 transition-all flex items-center justify-center gap-2">
-                            WhatsApp Us 💬
+                        <a href="https://wa.me/918087267039?text=Hi%20Radha!%20I%20want%20to%20enquire%20about%20custom%20cakes%20🎂" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="px-6 md:px-8 py-3.5 md:py-4 rounded-full glass font-bold text-base md:text-lg hover:bg-white/50 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                            WhatsApp Us <span aria-hidden="true">💬</span>
                         </a>
                     </div>
 
-                    <div class="flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500 dark:text-gray-400">
+                    <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
                         <div class="flex -space-x-2" aria-hidden="true">
                             <div class="w-8 h-8 rounded-full bg-pink-300 border-2 border-white dark:border-gray-800 flex items-center justify-center text-xs">😋</div>
                             <div class="w-8 h-8 rounded-full bg-purple-300 border-2 border-white dark:border-gray-800 flex items-center justify-center text-xs">🤩</div>
                             <div class="w-8 h-8 rounded-full bg-yellow-300 border-2 border-white dark:border-gray-800 flex items-center justify-center text-xs">🥰</div>
                         </div>
-                        <p>Fresh • Hygienic • Made with Love</p>
+                        <p class="font-medium">Fresh • Hygienic • Made with Love</p>
                     </div>
                 </div>
 
-                <div class="relative">
+                <div class="relative order-1 lg:order-2 hero-image-wrapper min-w-0">
                     <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full blur-3xl opacity-30 animate-pulse"></div>
                     <div class="relative animate-float">
-                        <div class="glass-card rounded-3xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                            <div class="aspect-square rounded-2xl bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/30 dark:to-purple-900/30 flex items-center justify-center text-9xl" aria-hidden="true">
-                                🎂
+                        <div class="glass-card rounded-2xl md:rounded-3xl p-4 md:p-6 hero-card-inner mx-auto max-w-[320px] md:max-w-none">
+                            <div class="aspect-square rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/30 dark:to-purple-900/30">
+                                <img src="https://images.pexels.com/photos/4109998/pexels-photo-4109998.jpeg" alt="Chocolate Truffle Cake - Best Seller" class="hero-img" loading="eager">
                             </div>
-                            <div class="mt-4 flex justify-between items-center">
-                                <div>
-                                    <h3 class="font-display font-bold text-xl">Chocolate Truffle</h3>
-                                    <p class="text-gray-500 dark:text-gray-400 text-sm">Best seller ✨</p>
+                            <div class="mt-3 md:mt-4 flex flex-wrap justify-between items-center gap-2">
+                                <div class="min-w-0">
+                                    <h3 class="font-display font-bold text-lg md:text-xl truncate">Chocolate Truffle</h3>
+                                    <p class="text-gray-500 dark:text-gray-400 text-xs md:text-sm">Best seller ✨</p>
                                 </div>
-                                <span class="font-bold text-2xl text-pink-500">From ₹400</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-8 -left-8 glass-card rounded-2xl p-4 animate-float-delayed hidden lg:block">
-                        <div class="flex items-center gap-3">
-                            <span class="text-3xl" aria-hidden="true">📞</span>
-                            <div>
-                                <p class="font-bold text-lg">8087267039</p>
-                                <p class="text-xs text-gray-500">Order 1 Day Prior</p>
+                                <span class="font-bold text-xl md:text-2xl text-pink-500 shrink-0">From ₹400</span>
                             </div>
                         </div>
                     </div>
@@ -265,131 +552,126 @@
     </section>
 
     <!-- ==================== FEATURES ==================== -->
-    <section class="py-12 px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform">
-                <div class="text-4xl mb-2" aria-hidden="true">🌿</div>
-                <h3 class="font-bold">Fresh Ingredients</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Only the best</p>
+    <section class="py-8 md:py-12 px-4" aria-label="Features">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
+            <div class="glass-card rounded-xl md:rounded-2xl p-3 md:p-5 lg:p-6 text-center hover:scale-105 transition-transform duration-300">
+                <div class="text-3xl md:text-4xl mb-1 md:mb-2" aria-hidden="true">🌿</div>
+                <h3 class="font-bold text-sm md:text-base">Fresh Ingredients</h3>
+                <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 mt-0.5">Only the best</p>
             </div>
-            <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform">
-                <div class="text-4xl mb-2" aria-hidden="true">🧼</div>
-                <h3 class="font-bold">Hygienic</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Clean kitchen</p>
+            <div class="glass-card rounded-xl md:rounded-2xl p-3 md:p-5 lg:p-6 text-center hover:scale-105 transition-transform duration-300">
+                <div class="text-3xl md:text-4xl mb-1 md:mb-2" aria-hidden="true">🧼</div>
+                <h3 class="font-bold text-sm md:text-base">Hygienic</h3>
+                <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 mt-0.5">Clean kitchen</p>
             </div>
-            <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform">
-                <div class="text-4xl mb-2" aria-hidden="true">💝</div>
-                <h3 class="font-bold">Made With Love</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Homemade touch</p>
+            <div class="glass-card rounded-xl md:rounded-2xl p-3 md:p-5 lg:p-6 text-center hover:scale-105 transition-transform duration-300">
+                <div class="text-3xl md:text-4xl mb-1 md:mb-2" aria-hidden="true">💝</div>
+                <h3 class="font-bold text-sm md:text-base">Made With Love</h3>
+                <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 mt-0.5">Homemade touch</p>
             </div>
-            <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform">
-                <div class="text-4xl mb-2" aria-hidden="true">📅</div>
-                <h3 class="font-bold">1 Day Prior</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Book in advance</p>
+            <div class="glass-card rounded-xl md:rounded-2xl p-3 md:p-5 lg:p-6 text-center hover:scale-105 transition-transform duration-300">
+                <div class="text-3xl md:text-4xl mb-1 md:mb-2" aria-hidden="true">📅</div>
+                <h3 class="font-bold text-sm md:text-base">1 Day Prior</h3>
+                <p class="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 mt-0.5">Book in advance</p>
             </div>
         </div>
     </section>
 
     <!-- ==================== MENU SECTION ==================== -->
-    <section id="menu" class="py-20 px-4">
+    <section id="menu" class="py-12 md:py-20 px-4 scroll-mt-header" aria-label="Menu">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-pink-500 font-bold tracking-wider uppercase text-sm">Price List</span>
-                <h2 class="font-display font-bold text-4xl lg:text-5xl mt-2">Our Menu 🌟</h2>
-                <p class="mt-4 text-gray-600 dark:text-gray-300">Add to cart and order via WhatsApp!</p>
+            <div class="text-center mb-8 md:mb-16">
+                <span class="text-pink-500 font-bold tracking-wider uppercase text-xs md:text-sm">Price List</span>
+                <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl mt-2">Our Menu <span aria-hidden="true">🌟</span></h2>
+                <p class="mt-3 md:mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base">Add to cart and order via WhatsApp!</p>
             </div>
 
-            <div class="flex justify-center gap-4 mb-12 flex-wrap" role="group" aria-label="Menu filters">
-                <button onclick="filterMenu('all')" class="filter-btn px-6 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium transition-all" data-filter="all" aria-pressed="true">All</button>
-                <button onclick="filterMenu('cakes')" class="filter-btn px-6 py-2 rounded-full glass font-medium hover:bg-white/40 transition-all" data-filter="cakes" aria-pressed="false">Cakes 🎂</button>
-                <button onclick="filterMenu('cupcakes')" class="filter-btn px-6 py-2 rounded-full glass font-medium hover:bg-white/40 transition-all" data-filter="cupcakes" aria-pressed="false">Cupcakes 🧁</button>
-                <button onclick="filterMenu('desserts')" class="filter-btn px-6 py-2 rounded-full glass font-medium hover:bg-white/40 transition-all" data-filter="desserts" aria-pressed="false">Desserts 🍫</button>
+            <div class="flex justify-center gap-2 md:gap-3 flex-wrap mb-8 md:mb-12" role="group" aria-label="Menu filters">
+                <button onclick="filterMenu('all')" class="filter-btn active px-4 md:px-5 py-2 rounded-full glass font-medium text-sm md:text-base" data-filter="all" aria-pressed="true">All</button>
+                <button onclick="filterMenu('cakes')" class="filter-btn px-4 md:px-5 py-2 rounded-full glass font-medium text-sm md:text-base hover:bg-white/40 transition-all" data-filter="cakes" aria-pressed="false">Cakes <span aria-hidden="true">🎂</span></button>
+                <button onclick="filterMenu('cupcakes')" class="filter-btn px-4 md:px-5 py-2 rounded-full glass font-medium text-sm md:text-base hover:bg-white/40 transition-all" data-filter="cupcakes" aria-pressed="false">Cupcakes <span aria-hidden="true">🧁</span></button>
+                <button onclick="filterMenu('desserts')" class="filter-btn px-4 md:px-5 py-2 rounded-full glass font-medium text-sm md:text-base hover:bg-white/40 transition-all" data-filter="desserts" aria-pressed="false">Desserts <span aria-hidden="true">🍫</span></button>
             </div>
 
-            <div id="menu-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"></div>
         </div>
     </section>
 
     <!-- ==================== FLAVORS SECTION ==================== -->
-    <section id="flavors" class="py-20 px-4 relative overflow-hidden">
+    <section id="flavors" class="py-12 md:py-20 px-4 relative overflow-hidden scroll-mt-header" aria-label="Flavors">
         <div class="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10"></div>
         <div class="max-w-5xl mx-auto relative z-10">
-            <div class="glass-card rounded-3xl p-8 lg:p-12 text-center">
-                <span class="text-pink-500 font-bold tracking-wider uppercase text-sm">All Flavours Available</span>
-                <h2 class="font-display font-bold text-4xl mt-2 mb-8">Pick Your Vibe 🌈</h2>
-
-                <div class="flex flex-wrap justify-center gap-4">
-                    <div class="glass-card px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                        <span aria-hidden="true">🌼</span> <span class="font-bold">Vanilla</span>
-                    </div>
-                    <div class="glass-card px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                        <span aria-hidden="true">🍫</span> <span class="font-bold">Chocolate</span>
-                    </div>
-                    <div class="glass-card px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                        <span aria-hidden="true">🧈</span> <span class="font-bold">Butterscotch</span>
-                    </div>
-                    <div class="glass-card px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                        <span aria-hidden="true">🍓</span> <span class="font-bold">Strawberry</span>
-                    </div>
-                    <div class="glass-card px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                        <span aria-hidden="true">🍍</span> <span class="font-bold">Pineapple</span>
-                    </div>
-                    <div class="glass-card px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                        <span aria-hidden="true">🌲</span> <span class="font-bold">Black Forest</span>
-                    </div>
+            <div class="glass-card rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 text-center">
+                <span class="text-pink-500 font-bold tracking-wider uppercase text-xs md:text-sm">All Flavours Available</span>
+                <h2 class="font-display font-bold text-3xl md:text-4xl mt-2 mb-6 md:mb-8">Pick Your Vibe <span aria-hidden="true">🌈</span></h2>
+                <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                    <div class="glass-card px-4 md:px-5 py-2 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default text-sm md:text-base"><span aria-hidden="true">🌼</span> <span class="font-bold">Vanilla</span></div>
+                    <div class="glass-card px-4 md:px-5 py-2 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default text-sm md:text-base"><span aria-hidden="true">🍫</span> <span class="font-bold">Chocolate</span></div>
+                    <div class="glass-card px-4 md:px-5 py-2 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default text-sm md:text-base"><span aria-hidden="true">🧈</span> <span class="font-bold">Butterscotch</span></div>
+                    <div class="glass-card px-4 md:px-5 py-2 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default text-sm md:text-base"><span aria-hidden="true">🍓</span> <span class="font-bold">Strawberry</span></div>
+                    <div class="glass-card px-4 md:px-5 py-2 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default text-sm md:text-base"><span aria-hidden="true">🍍</span> <span class="font-bold">Pineapple</span></div>
+                    <div class="glass-card px-4 md:px-5 py-2 rounded-full flex items-center gap-2 hover:scale-105 transition-transform cursor-default text-sm md:text-base"><span aria-hidden="true">🌲</span> <span class="font-bold">Black Forest</span></div>
                 </div>
-
-                <p class="mt-8 text-gray-600 dark:text-gray-300">All flavours available for cakes, cupcakes, and custom orders! ✨</p>
+                <p class="mt-6 md:mt-8 text-gray-600 dark:text-gray-300 text-sm md:text-base">All flavours available for cakes, cupcakes, and custom orders! ✨</p>
             </div>
         </div>
     </section>
 
     <!-- ==================== CUSTOM ORDERS ==================== -->
-    <section id="custom" class="py-20 px-4">
+    <section id="custom" class="py-12 md:py-20 px-4 scroll-mt-header" aria-label="Custom Orders">
         <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 relative">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-4 mt-8">
-                            <div class="glass-card rounded-2xl p-4 aspect-[3/4] flex items-center justify-center text-6xl bg-gradient-to-b from-pink-100 to-transparent dark:from-pink-900/20" aria-hidden="true">🎂</div>
-                            <div class="glass-card rounded-2xl p-4 aspect-square flex items-center justify-center text-6xl bg-gradient-to-b from-purple-100 to-transparent dark:from-purple-900/20" aria-hidden="true">🎉</div>
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 lg:order-1 relative min-w-0">
+                    <div class="grid grid-cols-2 gap-3 md:gap-4 max-w-xs mx-auto lg:mx-0">
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="glass-card rounded-xl md:rounded-2xl overflow-hidden aspect-[3/4] bg-gradient-to-b from-pink-100 to-transparent dark:from-pink-900/20">
+                                <img src="https://images.pexels.com/photos/12065625/pexels-photo-12065625.jpeg" alt="Birthday Cake" class="custom-img" loading="lazy">
+                            </div>
+                            <div class="glass-card rounded-xl md:rounded-2xl overflow-hidden aspect-square bg-gradient-to-b from-purple-100 to-transparent dark:from-purple-900/20">
+                                <img src="https://images.pexels.com/photos/31793674/pexels-photo-31793674.jpeg" alt="Anniversary Cake" class="custom-img" loading="lazy">
+                            </div>
                         </div>
-                        <div class="space-y-4">
-                            <div class="glass-card rounded-2xl p-4 aspect-square flex items-center justify-center text-6xl bg-gradient-to-b from-yellow-100 to-transparent dark:from-yellow-900/20" aria-hidden="true">💍</div>
-                            <div class="glass-card rounded-2xl p-4 aspect-[3/4] flex items-center justify-center text-6xl bg-gradient-to-b from-pink-100 to-transparent dark:from-pink-900/20" aria-hidden="true">🦄</div>
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="glass-card rounded-xl md:rounded-2xl overflow-hidden aspect-square bg-gradient-to-b from-yellow-100 to-transparent dark:from-yellow-900/20">
+                                <img src="https://images.pexels.com/photos/32849215/pexels-photo-32849215.jpeg" alt="Theme Cupcakes" class="custom-img" loading="lazy">
+                            </div>
+                            <div class="glass-card rounded-xl md:rounded-2xl overflow-hidden aspect-[3/4] bg-gradient-to-b from-pink-100 to-transparent dark:from-pink-900/20">
+                                <img src="https://images.pexels.com/photos/37055229/pexels-photo-37055229.jpeg" alt="All Occasions Dessert" class="custom-img" loading="lazy">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2">
-                    <span class="text-pink-500 font-bold tracking-wider uppercase text-sm">Custom Orders Accepted</span>
-                    <h2 class="font-display font-bold text-4xl lg:text-5xl mt-2 mb-6">Your Dream Cake,<br>Our Hands 🎨</h2>
 
-                    <ul class="space-y-4 mb-8">
+                <div class="order-1 lg:order-2 text-center lg:text-left min-w-0">
+                    <span class="text-pink-500 font-bold tracking-wider uppercase text-xs md:text-sm">Custom Orders Accepted</span>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl lg:text-5xl mt-2 mb-4 md:mb-6">Your Dream Cake,<br>Our Hands <span aria-hidden="true">🎨</span></h2>
+                    <ul class="space-y-2 md:space-y-3 mb-6 md:mb-8 inline-block lg:block text-left mx-auto">
                         <li class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600" aria-hidden="true">✅</span>
-                            <span class="text-lg">Birthday Cakes</span>
+                            <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 text-sm md:text-base shrink-0">✅</span>
+                            <span class="text-base md:text-lg">Birthday Cakes</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600" aria-hidden="true">✅</span>
-                            <span class="text-lg">Anniversary Cakes</span>
+                            <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 text-sm md:text-base shrink-0">✅</span>
+                            <span class="text-base md:text-lg">Anniversary Cakes</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-600" aria-hidden="true">✅</span>
-                            <span class="text-lg">Theme Cakes</span>
+                            <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-600 text-sm md:text-base shrink-0">✅</span>
+                            <span class="text-base md:text-lg">Theme Cakes</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600" aria-hidden="true">✅</span>
-                            <span class="text-lg">All Occasions</span>
+                            <span class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 text-sm md:text-base shrink-0">✅</span>
+                            <span class="text-base md:text-lg">All Occasions</span>
                         </li>
                     </ul>
-
-                    <div class="glass-card rounded-2xl p-6 mb-6">
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">⚠️ Please Note</p>
-                        <p class="font-bold text-lg">Order 1 Day Prior 💕</p>
+                    <div class="glass-card rounded-xl md:rounded-2xl p-4 md:p-5 mb-4 md:mb-6 inline-block w-full lg:w-auto">
+                        <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">⚠️ Please Note</p>
+                        <p class="font-bold text-base md:text-lg">Order 1 Day Prior <span aria-hidden="true">💕</span></p>
                     </div>
-
-                    <a href="https://wa.me/918087267039?text=Hi%20Radha!%20I%20want%20to%20order%20a%20custom%20cake%20🎂" target="_blank" rel="noopener noreferrer" class="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold hover:shadow-xl hover:scale-105 transition-all">
-                        Book Custom Cake 📩
+                    <a href="https://wa.me/918087267039?text=Hi%20Radha!%20I%20want%20to%20order%20a%20custom%20cake%20🎂" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="inline-block px-6 md:px-8 py-3.5 md:py-4 rounded-full btn-primary text-base md:text-lg">
+                        Book Custom Cake <span aria-hidden="true">📩</span>
                     </a>
                 </div>
             </div>
@@ -397,23 +679,23 @@
     </section>
 
     <!-- ==================== CONTACT ==================== -->
-    <section id="contact" class="py-20 px-4 relative overflow-hidden">
+    <section id="contact" class="py-12 md:py-20 px-4 relative overflow-hidden scroll-mt-header" aria-label="Contact">
         <div class="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10"></div>
         <div class="max-w-4xl mx-auto relative z-10 text-center">
-            <div class="glass-card rounded-3xl p-8 lg:p-12">
-                <span class="text-6xl mb-4 block" aria-hidden="true">💬</span>
-                <h2 class="font-display font-bold text-4xl mb-4">Let's Chat on WhatsApp!</h2>
-                <p class="text-gray-600 dark:text-gray-300 mb-8 text-lg">Tap the button below to directly message Radha for orders & enquiries.</p>
-
-                <a href="https://wa.me/918087267039?text=Hi%20Radha!%20I%20want%20to%20place%20an%20order%20🎂" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-green-500 text-white font-bold text-lg hover:shadow-xl hover:scale-105 transition-all">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Chat on WhatsApp
+            <div class="glass-card rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12">
+                <span class="text-5xl md:text-6xl block mb-3 md:mb-4" aria-hidden="true">💬</span>
+                <h2 class="font-display font-bold text-3xl md:text-4xl mb-3 md:mb-4">Let's Chat on WhatsApp!</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 md:mb-8 text-base md:text-lg">Tap the button below to directly message Radha for orders & enquiries.</p>
+                <a href="https://wa.me/918087267039?text=Hi%20Radha!%20I%20want%20to%20place%20an%20order%20🎂" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3.5 md:py-4 rounded-full bg-green-500 text-white font-bold text-base md:text-lg hover:bg-green-600 hover:shadow-xl hover:scale-105 transition-all">
+                    <span aria-hidden="true">📱</span> Chat on WhatsApp
                 </a>
-
-                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-6 text-gray-600 dark:text-gray-300">
-                    <div class="flex items-center gap-2">
+                <div class="mt-6 md:mt-8 flex flex-col sm:flex-row justify-center gap-4 md:gap-6 text-gray-600 dark:text-gray-300">
+                    <div class="flex items-center justify-center gap-2">
                         <span aria-hidden="true">📞</span>
-                        <span class="font-bold">8087267039</span>
+                        <span class="font-bold text-base md:text-lg">8087267039</span>
                     </div>
                 </div>
             </div>
@@ -421,39 +703,39 @@
     </section>
 
     <!-- ==================== FOOTER ==================== -->
-    <footer class="glass mt-20 border-t border-white/20">
-        <div class="max-w-7xl mx-auto px-4 py-12">
-            <div class="grid md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
+    <footer class="glass mt-12 md:mt-20 border-t border-white/20">
+        <div class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8 text-center md:text-left">
                 <div>
-                    <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
-                        <span class="text-3xl" aria-hidden="true">🎂</span>
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-3 md:mb-4">
+                        <span class="text-2xl md:text-3xl" aria-hidden="true">🎂</span>
                         <div>
-                            <span class="font-display font-bold text-2xl text-gradient block leading-none">Radha Bakes</span>
-                            <span class="text-xs text-pink-500 font-medium tracking-widest">HOMEMADE WITH LOVE</span>
+                            <span class="font-display font-bold text-xl md:text-2xl text-gradient block leading-none">Radha Bakes</span>
+                            <span class="text-[10px] md:text-xs text-pink-500 font-semibold tracking-widest uppercase">Homemade With Love</span>
                         </div>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400">Fresh ingredients, hygienic, and made with lots of love. Order 1 day prior! 💕</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">Fresh ingredients, hygienic, and made with lots of love. Order 1 day prior! <span aria-hidden="true">💕</span></p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
-                        <li><a href="#menu" class="hover:text-pink-500 transition-colors">Menu</a></li>
-                        <li><a href="#custom" class="hover:text-pink-500 transition-colors">Custom Orders</a></li>
-                        <li><a href="#flavors" class="hover:text-pink-500 transition-colors">Flavours</a></li>
+                    <h4 class="font-bold mb-3 md:mb-4 text-base md:text-lg">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                        <li><a href="#menu" class="hover:text-pink-500 transition-colors inline-block py-1">Menu</a></li>
+                        <li><a href="#custom" class="hover:text-pink-500 transition-colors inline-block py-1">Custom Orders</a></li>
+                        <li><a href="#flavors" class="hover:text-pink-500 transition-colors inline-block py-1">Flavours</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                    <h4 class="font-bold mb-3 md:mb-4 text-base md:text-lg">Contact</h4>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400 text-sm md:text-base">
                         <li>📞 8087267039</li>
                         <li>💬 WhatsApp Only</li>
-                        <li>📍 Home Kitchen</li>
+                        <li>📍 Parbhani</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-200 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-sm">© 2026 Radha Bakes. All rights reserved.</p>
-                <p class="text-gray-500 text-sm">Made with 💖 and lots of sugar</p>
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
+                <p class="text-gray-500 text-xs md:text-sm">© 2026 Radha Bakes. All rights reserved.</p>
+                <p class="text-gray-500 text-xs md:text-sm">Made with <span aria-hidden="true">💖</span> and lots of sugar</p>
             </div>
         </div>
     </footer>
@@ -461,176 +743,365 @@
     <!-- ==================== CART SIDEBAR ==================== -->
     <div id="cart-sidebar" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="Shopping cart">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
-        <div class="absolute right-0 top-0 h-full w-full max-w-md glass-card border-l border-white/20 flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-panel">
-            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+        <div class="absolute right-0 top-0 h-full w-full sm:w-[28rem] glass-strong border-l border-white/20 dark:border-white/10 flex flex-col cart-panel transform translate-x-full" id="cart-panel">
+            <div class="p-4 md:p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center shrink-0">
                 <div>
-                    <h2 class="font-display font-bold text-2xl">Your Order 🛒</h2>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" id="cart-subtitle">0 items</p>
+                    <h2 class="font-display font-bold text-xl md:text-2xl">Your Order <span aria-hidden="true">🛒</span></h2>
+                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-1" id="cart-subtitle">0 items</p>
                 </div>
-                <button onclick="toggleCart()" class="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors text-xl" aria-label="Close cart">✕</button>
+                <button onclick="toggleCart()" class="p-2.5 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-full transition-colors text-xl" aria-label="Close cart">✕</button>
             </div>
 
-            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
-                <div class="text-center py-12">
-                    <span class="text-6xl block mb-4" aria-hidden="true">🛒</span>
-                    <p class="text-gray-500 text-lg">Your cart is empty</p>
-                    <p class="text-gray-400 text-sm mt-2">Add some yummy items!</p>
-                </div>
-            </div>
+            <div id="cart-items" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-3 md:space-y-4 custom-scrollbar"></div>
 
-            <div id="cart-footer" class="border-t border-gray-200 dark:border-gray-700 p-6 hidden">
-                <div class="space-y-3 mb-6">
+            <div id="cart-footer" class="border-t border-gray-200 dark:border-gray-700 p-4 md:p-6 hidden shrink-0">
+                <div class="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-500 dark:text-gray-400">Items</span>
-                        <span class="font-medium" id="summary-items">0</span>
+                        <span id="summary-items" class="font-medium">0</span>
                     </div>
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-500 dark:text-gray-400">Subtotal</span>
-                        <span class="font-medium" id="summary-subtotal">₹0</span>
+                        <span id="summary-subtotal" class="font-medium">₹0</span>
                     </div>
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-500 dark:text-gray-400">Delivery</span>
-                        <span class="font-medium text-green-500">Free</span>
+                        <span class="text-green-500 font-medium">Free</span>
                     </div>
-                    <div class="border-t border-gray-200 dark:border-gray-700 pt-3 flex justify-between text-lg font-bold">
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-2 md:pt-3 flex justify-between text-base md:text-lg font-bold">
                         <span>Total</span>
                         <span class="text-pink-500" id="summary-total">₹0</span>
                     </div>
                 </div>
-
-                <button onclick="sendWhatsAppOrder()" class="w-full py-4 rounded-full bg-green-500 text-white font-bold text-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 mb-3">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Order on WhatsApp
+                <button onclick="sendWhatsAppOrder()" class="w-full py-3.5 md:py-4 rounded-full bg-green-500 text-white font-bold text-base md:text-lg hover:bg-green-600 hover:shadow-xl transition-all flex items-center justify-center gap-2 mb-2 md:mb-3">
+                    <span aria-hidden="true">💬</span> Order on WhatsApp
                 </button>
-
-                <button onclick="clearCart()" class="w-full py-3 rounded-full glass text-sm font-medium hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-500 transition-all">
+                <button onclick="clearCart()" class="w-full py-2.5 md:py-3 rounded-full glass text-sm font-medium hover:bg-red-50 dark:hover:bg-red-900/30 hover:text-red-500 transition-all">
                     Clear Cart
                 </button>
-
-                <p class="text-xs text-center text-gray-500 mt-3">Your order details will be sent to Radha via WhatsApp 💬</p>
+                <p class="text-[10px] md:text-xs text-center text-gray-500 mt-2 md:mt-3">Your order details will be sent to Radha via WhatsApp <span aria-hidden="true">💬</span></p>
             </div>
         </div>
     </div>
 
     <!-- ==================== SIZE/QUANTITY MODAL ==================== -->
-    <div id="size-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Select size and quantity">
+    <div id="size-modal" class="fixed inset-0 z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4" role="dialog" aria-modal="true">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeSizeModal()"></div>
-        <div class="relative glass-card rounded-3xl p-6 max-w-sm w-full transform transition-all duration-200 scale-95 opacity-0" id="size-modal-content">
-            <button onclick="closeSizeModal()" class="absolute top-4 right-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors text-xl" aria-label="Close modal">✕</button>
+        <div class="relative glass-strong rounded-t-2xl sm:rounded-3xl p-5 md:p-6 max-w-sm w-full modal-content modal-hidden" id="size-modal-content">
+            <button onclick="closeSizeModal()" class="absolute top-3 right-3 md:top-4 md:right-4 p-2 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 rounded-full text-xl transition-colors" aria-label="Close">✕</button>
 
-            <div class="text-center mb-6">
-                <span class="text-6xl block mb-2" id="modal-emoji" aria-hidden="true">🎂</span>
-                <h3 class="font-display font-bold text-2xl" id="modal-name">Product Name</h3>
-                <p class="text-gray-500 dark:text-gray-400 text-sm mt-1" id="modal-desc">Description</p>
+            <div class="text-center mb-5 md:mb-6 pt-2">
+                <div class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-3 rounded-2xl overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/30 dark:to-purple-900/30">
+                    <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-display font-bold text-xl md:text-2xl" id="modal-name">Product Name</h3>
+                <p class="text-gray-500 text-xs md:text-sm mt-1" id="modal-desc">Description</p>
             </div>
 
-            <div id="modal-size-options" class="space-y-3 hidden"></div>
+            <div id="modal-size-options" class="space-y-2 md:space-y-3 hidden"></div>
 
             <div id="modal-qty-section" class="hidden">
-                <div class="flex items-center justify-between mb-6">
-                    <span class="text-gray-600 dark:text-gray-300 font-medium">Quantity:</span>
-                    <div class="flex items-center gap-3">
-                        <button onclick="adjustModalQty(-1)" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center justify-center text-lg font-bold" aria-label="Decrease quantity">−</button>
-                        <span id="modal-qty-display" class="font-bold text-xl w-8 text-center">1</span>
-                        <button onclick="adjustModalQty(1)" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center justify-center text-lg font-bold" aria-label="Increase quantity">+</button>
+                <div class="flex items-center justify-between mb-4 md:mb-6">
+                    <span class="font-medium text-sm md:text-base">Quantity:</span>
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <button onclick="adjustModalQty(-1)" class="qty-btn" aria-label="Decrease quantity">−</button>
+                        <span id="modal-qty-display" class="font-bold text-lg md:text-xl w-8 text-center">1</span>
+                        <button onclick="adjustModalQty(1)" class="qty-btn" aria-label="Increase quantity">+</button>
                     </div>
                 </div>
-
-                <div class="flex justify-between items-center mb-4 px-2">
-                    <span class="text-gray-500 dark:text-gray-400">Price per item</span>
-                    <span class="font-bold text-lg" id="modal-unit-price">₹0</span>
+                <div class="flex justify-between mb-3 md:mb-4 px-2 text-sm md:text-base">
+                    <span class="text-gray-500">Price per item</span>
+                    <span class="font-bold" id="modal-unit-price">₹0</span>
                 </div>
-
-                <div class="flex justify-between items-center mb-6 px-2 py-3 rounded-xl bg-pink-50 dark:bg-pink-900/20">
-                    <span class="font-bold text-pink-600 dark:text-pink-400">Total</span>
-                    <span class="font-bold text-2xl text-pink-600 dark:text-pink-400" id="modal-total-price">₹0</span>
+                <div class="flex justify-between mb-5 md:mb-6 px-2 py-2.5 md:py-3 rounded-xl bg-pink-50 dark:bg-pink-900/20">
+                    <span class="font-bold text-pink-600 text-sm md:text-base">Total</span>
+                    <span class="font-bold text-xl md:text-2xl text-pink-600" id="modal-total-price">₹0</span>
                 </div>
-
-                <button onclick="addToCartSimple()" class="w-full py-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold text-lg hover:shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                    <span>Add to Cart</span>
-                    <span id="modal-btn-total">₹0</span>
+                <button onclick="addToCartSimple()" class="w-full py-3.5 md:py-4 rounded-full btn-primary text-base md:text-lg flex items-center justify-center gap-2">
+                    Add to Cart <span id="modal-btn-total">₹0</span>
                 </button>
             </div>
         </div>
     </div>
 
     <!-- ==================== TOAST ==================== -->
-    <div id="toast" class="fixed bottom-8 right-8 z-50 hidden" role="status" aria-live="polite">
-        <div class="glass-card px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border-l-4 border-pink-500">
-            <span class="text-2xl" aria-hidden="true">✨</span>
-            <p id="toast-message" class="font-medium">Item added!</p>
+    <div id="toast" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 hidden" role="status" aria-live="polite">
+        <div class="glass-strong px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 border-l-4 border-pink-500 max-w-[90vw]">
+            <span class="text-xl md:text-2xl shrink-0" aria-hidden="true">✨</span>
+            <p id="toast-message" class="font-medium text-sm md:text-base">Item added!</p>
         </div>
     </div>
 
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        const products = [{
-            id: 1,
-            name: "Vanilla Cake",
-            category: "cakes",
-            emoji: "🌼",
-            desc: "Simple design, all flavours available",
-            hasSizes: true,
-            sizes: [
-                { label: "Half KG", price: 300 },
-                { label: "1 KG (Full Design)", price: 700 }
-            ]
-        }, {
-            id: 2,
-            name: "Chocolate Truffle Cake",
-            category: "cakes",
-            emoji: "🍫",
-            desc: "Rich chocolate, all flavours available",
-            hasSizes: true,
-            sizes: [
-                { label: "Half KG", price: 400 },
-                { label: "1 KG (Full Design)", price: 800 }
-            ]
-        }, {
-            id: 3,
-            name: "Cup Cake",
-            category: "cupcakes",
-            emoji: "🧁",
-            desc: "Soft, fluffy, and delicious",
-            hasSizes: false,
-            price: 10,
-            unit: "per piece"
-        }, {
-            id: 4,
-            name: "Chocolate Bowl",
-            category: "desserts",
-            emoji: "🍮",
-            desc: "Chocolate overload in a bowl",
-            hasSizes: false,
-            price: 100,
-            unit: "per bowl"
-        }, {
-            id: 5,
-            name: "Glass Cake",
-            category: "desserts",
-            emoji: "🥛",
-            desc: "Layered goodness in a glass",
-            hasSizes: false,
-            price: 50,
-            unit: "per glass"
-        }, {
-            id: 6,
-            name: "Milk Tub Cake",
-            category: "desserts",
-            emoji: "🥡",
-            desc: "Creamy milk cake in tub",
-            hasSizes: false,
-            price: 150,
-            unit: "per tub"
-        }, {
-            id: 7,
-            name: "Chocolate Tub Cake",
-            category: "desserts",
-            emoji: "🍫",
-            desc: "Chocolate cake in tub",
-            hasSizes: false,
-            price: 150,
-            unit: "per tub"
-        }];
+        const products = [
+    // 🍰 Cakes
+    {
+        id: 1,
+        name: "Vanilla Cake",
+        category: "cakes",
+        emoji: "🌼",
+        image: "https://images.pexels.com/photos/11424070/pexels-photo-11424070.png",
+        desc: "Classic vanilla flavour cake",
+        hasSizes: true,
+        sizes: [
+            { label: "Half KG", price: 300 },
+            { label: "1 KG", price: 700 }
+        ]
+    },
+
+    {
+        id: 2,
+        name: "Chocolate Cake",
+        category: "cakes",
+        emoji: "🍫",
+        image: "https://images.pexels.com/photos/7381533/pexels-photo-7381533.jpeg",
+        desc: "Rich chocolate cake",
+        hasSizes: true,
+        sizes: [
+            { label: "Half KG", price: 400 },
+            { label: "1 KG", price: 800 }
+        ]
+    },
+
+    {
+        id: 3,
+        name: "Butterscotch Cake",
+        category: "cakes",
+        emoji: "🧈",
+        image: "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg",
+        desc: "Crunchy butterscotch delight",
+        hasSizes: true,
+        sizes: [
+            { label: "Half KG", price: 350 },
+            { label: "1 KG", price: 750 }
+        ]
+    },
+
+    {
+        id: 4,
+        name: "Strawberry Cake",
+        category: "cakes",
+        emoji: "🍓",
+        image: "https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg",
+        desc: "Fresh strawberry flavour cake",
+        hasSizes: true,
+        sizes: [
+            { label: "Half KG", price: 350 },
+            { label: "1 KG", price: 750 }
+        ]
+    },
+
+    {
+        id: 5,
+        name: "Pineapple Cake",
+        category: "cakes",
+        emoji: "🍍",
+        image: "https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg",
+        desc: "Classic pineapple cream cake",
+        hasSizes: true,
+        sizes: [
+            { label: "Half KG", price: 320 },
+            { label: "1 KG", price: 720 }
+        ]
+    },
+
+    {
+        id: 6,
+        name: "Black Forest Cake",
+        category: "cakes",
+        emoji: "🌲",
+        image: "https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg",
+        desc: "Black forest chocolate cake",
+        hasSizes: true,
+        sizes: [
+            { label: "Half KG", price: 400 },
+            { label: "1 KG", price: 850 }
+        ]
+    },
+
+    // 🧁 Cupcakes
+    {
+        id: 7,
+        name: "Chocolate Cupcakes",
+        category: "cupcakes",
+        emoji: "🧁",
+        image: "https://images.pexels.com/photos/27402269/pexels-photo-27402269.png",
+        desc: "Chocolate cream cupcakes",
+        hasSizes: false,
+        price: 25,
+        unit: "per piece"
+    },
+
+    {
+        id: 8,
+        name: "Vanilla Cupcakes",
+        category: "cupcakes",
+        emoji: "🧁",
+        image: "https://images.pexels.com/photos/7140433/pexels-photo-7140433.jpeg",
+        desc: "Soft vanilla cupcakes",
+        hasSizes: false,
+        price: 25,
+        unit: "per piece"
+    },
+
+    {
+        id: 9,
+        name: "Red Velvet Cupcakes",
+        category: "cupcakes",
+        emoji: "❤️",
+        image: "https://images.pexels.com/photos/6375498/pexels-photo-6375498.jpeg",
+        desc: "Creamy red velvet cupcakes",
+        hasSizes: false,
+        price: 35,
+        unit: "per piece"
+    },
+
+    {
+        id: 10,
+        name: "Oreo Cupcakes",
+        category: "cupcakes",
+        emoji: "🍪",
+        image: "https://images.pexels.com/photos/16134541/pexels-photo-16134541.jpeg",
+        desc: "Loaded with Oreo crunch",
+        hasSizes: false,
+        price: 35,
+        unit: "per piece"
+    },
+
+    {
+        id: 11,
+        name: "Butterscotch Cupcakes",
+        category: "cupcakes",
+        emoji: "🧈",
+        image: "https://images.pexels.com/photos/36361408/pexels-photo-36361408.jpeg",
+        desc: "Butterscotch cream cupcakes",
+        hasSizes: false,
+        price: 30,
+        unit: "per piece"
+    },
+
+    {
+        id: 12,
+        name: "Strawberry Cupcakes",
+        category: "cupcakes",
+        emoji: "🍓",
+        image: "https://images.pexels.com/photos/8874017/pexels-photo-8874017.jpeg",
+        desc: "Fresh strawberry cupcakes",
+        hasSizes: false,
+        price: 30,
+        unit: "per piece"
+    },
+
+    {
+        id: 13,
+        name: "Customized Cupcakes",
+        category: "cupcakes",
+        emoji: "🎨",
+        image: "https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg",
+        desc: "Custom design cupcakes",
+        hasSizes: false,
+        price: 40,
+        unit: "per piece"
+    },
+
+    {
+        id: 14,
+        name: "Mini Cupcakes",
+        category: "cupcakes",
+        emoji: "🧁",
+        image: "https://media.istockphoto.com/id/184115049/photo/chocolate-cupcakes-on-white-background.jpg?b=1&s=612x612&w=0&k=20&c=UcQwPOWvHekRpaPp_9pnEO2zlY-iCNxpJxg66TEhQYs=",
+        desc: "Mini bite-sized cupcakes",
+        hasSizes: false,
+        price: 15,
+        unit: "per piece"
+    },
+
+    {
+        id: 15,
+        name: "Theme Cupcakes",
+        category: "cupcakes",
+        emoji: "✨",
+        image: "https://images.pexels.com/photos/1028714/pexels-photo-1028714.jpeg",
+        desc: "Theme-based party cupcakes",
+        hasSizes: false,
+        price: 45,
+        unit: "per piece"
+    },
+
+    {
+        id: 16,
+        name: "Jar Cupcakes",
+        category: "cupcakes",
+        emoji: "🥤",
+        image: "https://images.pexels.com/photos/26341203/pexels-photo-26341203.jpeg",
+        desc: "Cupcakes served in jars",
+        hasSizes: false,
+        price: 80,
+        unit: "per jar"
+    },
+
+    // 🍮 Desserts
+    {
+        id: 17,
+        name: "Brownies",
+        category: "desserts",
+        emoji: "🍫",
+        image: "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg",
+        desc: "Chocolate brownies",
+        hasSizes: false,
+        price: 60,
+        unit: "per piece"
+    },
+
+    {
+        id: 18,
+        name: "Cheesecake",
+        category: "desserts",
+        emoji: "🍰",
+        image: "https://images.pexels.com/photos/24206906/pexels-photo-24206906.jpeg",
+        desc: "Creamy cheesecake",
+        hasSizes: false,
+        price: 120,
+        unit: "per slice"
+    },
+
+    {
+        id: 19,
+        name: "Pastries",
+        category: "desserts",
+        emoji: "🍥",
+        image: "https://images.pexels.com/photos/6416554/pexels-photo-6416554.jpeg",
+        desc: "Fresh cream pastries",
+        hasSizes: false,
+        price: 50,
+        unit: "per piece"
+    },
+
+    {
+        id: 20,
+        name: "Jar Desserts",
+        category: "desserts",
+        emoji: "🥤",
+        image: "https://images.pexels.com/photos/26341202/pexels-photo-26341202.jpeg",
+        desc: "Layered jar desserts",
+        hasSizes: false,
+        price: 100,
+        unit: "per jar"
+    },
+
+    {
+        id: 21,
+        name: "Mousse",
+        category: "desserts",
+        emoji: "🍮",
+        image: "https://images.pexels.com/photos/29039080/pexels-photo-29039080.jpeg",
+        desc: "Smooth creamy mousse",
+        hasSizes: false,
+        price: 90,
+        unit: "per cup"
+    }
+];
 
         let cart = [];
         let currentFilter = 'all';
@@ -642,14 +1113,18 @@
             renderMenu();
             initTheme();
             renderCart();
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    closeMobileMenu();
+                }
+            });
         });
 
         function initTheme() {
-            const isDark = localStorage.getItem('theme') === 'dark' ||
+            const isDark = localStorage.getItem('theme') === 'dark' || 
                 (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            if (isDark) {
-                document.documentElement.classList.add('dark');
-            }
+            if (isDark) document.documentElement.classList.add('dark');
             updateThemeIcons();
         }
 
@@ -662,63 +1137,86 @@
 
         function updateThemeIcons() {
             const isDark = document.documentElement.classList.contains('dark');
-            const iconChar = isDark ? '☀️' : '🌙';
-            const desktopIcon = document.getElementById('theme-icon');
-            const mobileIcon = document.getElementById('theme-icon-mobile');
-            if (desktopIcon) desktopIcon.textContent = iconChar;
-            if (mobileIcon) mobileIcon.textContent = iconChar;
+            const icon = isDark ? '☀️' : '🌙';
+            const label = isDark ? 'Light Mode' : 'Dark Mode';
+
+            const desktop = document.getElementById('theme-icon');
+            const mobile = document.getElementById('theme-icon-mobile');
+            const mobileLabel = document.getElementById('theme-label-mobile');
+
+            if (desktop) desktop.textContent = icon;
+            if (mobile) mobile.textContent = icon;
+            if (mobileLabel) mobileLabel.textContent = label;
         }
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const btn = document.getElementById('mobile-menu-btn');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
             const isHidden = menu.classList.contains('hidden');
-            menu.classList.toggle('hidden');
-            if (btn) btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.classList.add('mobile-menu-enter');
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            } else {
+                closeMobileMenu();
+            }
         }
 
         function closeMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const btn = document.getElementById('mobile-menu-btn');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
+
             menu.classList.add('hidden');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('mobile-menu-enter');
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
         }
 
         function renderMenu() {
             const grid = document.getElementById('menu-grid');
             const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
 
-            grid.innerHTML = filtered.map(product => {
-                const priceDisplay = product.hasSizes ?
-                    `From ₹${product.sizes[0].price}` :
-                    `₹${product.price} <span class="text-sm font-normal text-gray-500">${product.unit}</span>`;
+            grid.innerHTML = filtered.map((p, idx) => {
+                const priceDisplay = p.hasSizes 
+                    ? `From ₹${p.sizes[0].price}` 
+                    : `₹${p.price} <span class="text-xs md:text-sm font-normal text-gray-500 dark:text-gray-400">${p.unit}</span>`;
 
                 return `
-                <div class="glass-card rounded-2xl p-6 cake-hover transition-all duration-300 group">
-                    <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 flex items-center justify-center text-7xl mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
-                        ${product.emoji}
+                    <div class="glass-card rounded-xl md:rounded-2xl p-4 md:p-5 card-hover group animate-slide-up stagger-${(idx % 4) + 1}">
+                        <div class="aspect-[4/3] rounded-lg md:rounded-xl overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 mb-3 md:mb-4">
+                            <img src="${p.image}" alt="${p.name}" class="product-img" loading="lazy">
+                        </div>
+                        <div class="flex flex-wrap justify-between items-start gap-1 md:gap-2 mb-1.5 md:mb-2">
+                            <h3 class="font-display font-bold text-base md:text-xl">${p.name}</h3>
+                            <span class="font-bold text-pink-500 text-base md:text-lg">${priceDisplay}</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-3 md:mb-4">${p.desc}</p>
+                        <button onclick="openProductModal(${p.id})" class="w-full py-2.5 md:py-3 rounded-xl btn-primary text-sm md:text-base">
+                            + Add to Cart
+                        </button>
                     </div>
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-display font-bold text-xl">${product.name}</h3>
-                        <span class="font-bold text-pink-500 text-lg">${priceDisplay}</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">${product.desc}</p>
-                    <button onclick="openProductModal(${product.id})" class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold hover:shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
-                        <span>Add to Cart</span>
-                        <span aria-hidden="true">+</span>
-                    </button>
-                </div>
-            `;
+                `;
             }).join('');
 
             if (filtered.length === 0) {
                 grid.innerHTML = `
-                <div class="col-span-full text-center py-16">
-                    <span class="text-6xl block mb-4">🔍</span>
-                    <p class="text-gray-500 text-lg">No items found in this category</p>
-                    <button onclick="filterMenu('all')" class="mt-4 px-6 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium hover:shadow-lg transition-all">Show All Items</button>
-                </div>
-            `;
+                    <div class="col-span-full text-center py-12 md:py-16">
+                        <span class="text-5xl md:text-6xl" aria-hidden="true">🔍</span>
+                        <p class="text-gray-500 text-base md:text-lg mt-2">No items found</p>
+                        <button onclick="filterMenu('all')" class="mt-3 md:mt-4 px-5 md:px-6 py-2 md:py-2.5 rounded-full btn-primary text-sm md:text-base">Show All</button>
+                    </div>
+                `;
             }
         }
 
@@ -727,11 +1225,11 @@
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 const isActive = btn.dataset.filter === category;
                 if (isActive) {
-                    btn.classList.add('bg-gradient-to-r', 'from-pink-500', 'to-purple-500', 'text-white');
+                    btn.classList.add('active');
                     btn.classList.remove('glass');
                     btn.setAttribute('aria-pressed', 'true');
                 } else {
-                    btn.classList.remove('bg-gradient-to-r', 'from-pink-500', 'to-purple-500', 'text-white');
+                    btn.classList.remove('active');
                     btn.classList.add('glass');
                     btn.setAttribute('aria-pressed', 'false');
                 }
@@ -742,32 +1240,35 @@
         function openProductModal(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
+
             pendingProduct = product;
             modalQty = 1;
 
-            document.getElementById('modal-emoji').textContent = product.emoji;
+            // Set modal image
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = product.image;
+            modalImg.alt = product.name;
+
             document.getElementById('modal-name').textContent = product.name;
             document.getElementById('modal-desc').textContent = product.desc;
 
-            const sizeSection = document.getElementById('modal-size-options');
-            const qtySection = document.getElementById('modal-qty-section');
+            const sizeSec = document.getElementById('modal-size-options');
+            const qtySec = document.getElementById('modal-qty-section');
 
             if (product.hasSizes) {
-                sizeSection.classList.remove('hidden');
-                qtySection.classList.add('hidden');
-
-                sizeSection.innerHTML = product.sizes.map((size, idx) => `
-                    <button onclick="addSizeToCart(${idx})" class="w-full p-4 rounded-xl glass hover:bg-pink-100 dark:hover:bg-pink-900/30 transition-all flex justify-between items-center border border-transparent hover:border-pink-300 dark:hover:border-pink-700">
+                sizeSec.classList.remove('hidden');
+                qtySec.classList.add('hidden');
+                sizeSec.innerHTML = product.sizes.map((size, idx) => `
+                    <button onclick="addSizeToCart(${idx})" class="w-full p-3 md:p-4 rounded-xl glass hover:bg-pink-50 dark:hover:bg-pink-900/30 transition-all flex justify-between items-center group">
                         <div class="text-left">
-                            <span class="font-bold text-lg block">${size.label}</span>
+                            <span class="font-bold text-base md:text-lg block">${size.label}</span>
                         </div>
-                        <span class="font-bold text-pink-500 text-xl">₹${size.price}</span>
+                        <span class="font-bold text-pink-500 text-lg md:text-xl">₹${size.price}</span>
                     </button>
                 `).join('');
             } else {
-                sizeSection.classList.add('hidden');
-                qtySection.classList.remove('hidden');
-
+                sizeSec.classList.add('hidden');
+                qtySec.classList.remove('hidden');
                 document.getElementById('modal-unit-price').textContent = `₹${product.price}`;
                 document.getElementById('modal-qty-display').textContent = modalQty;
                 updateModalPrice();
@@ -775,27 +1276,29 @@
 
             const modal = document.getElementById('size-modal');
             const content = document.getElementById('size-modal-content');
+
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+
             requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    content.classList.remove('scale-95', 'opacity-0');
-                    content.classList.add('scale-100', 'opacity-100');
-                });
+                content.classList.remove('modal-hidden');
+                content.classList.add('modal-visible');
             });
         }
 
         function closeSizeModal() {
             const modal = document.getElementById('size-modal');
             const content = document.getElementById('size-modal-content');
-            content.classList.remove('scale-100', 'opacity-100');
-            content.classList.add('scale-95', 'opacity-0');
+
+            content.classList.remove('modal-visible');
+            content.classList.add('modal-hidden');
             document.body.style.overflow = '';
+
             setTimeout(() => {
                 modal.classList.add('hidden');
                 pendingProduct = null;
                 modalQty = 1;
-            }, 200);
+            }, 250);
         }
 
         function adjustModalQty(delta) {
@@ -812,9 +1315,9 @@
         }
 
         function addSizeToCart(sizeIdx) {
-            if (!pendingProduct || !pendingProduct.sizes || !pendingProduct.sizes[sizeIdx]) return;
+            if (!pendingProduct?.sizes?.[sizeIdx]) return;
             const size = pendingProduct.sizes[sizeIdx];
-            const cartItem = {
+            cart.push({
                 id: Date.now(),
                 productId: pendingProduct.id,
                 name: `${pendingProduct.name} (${size.label})`,
@@ -822,17 +1325,17 @@
                 sizeLabel: size.label,
                 price: size.price,
                 emoji: pendingProduct.emoji,
+                image: pendingProduct.image,
                 qty: 1
-            };
-            cart.push(cartItem);
+            });
             updateCart();
             closeSizeModal();
-            showToast(`${pendingProduct.emoji} ${cartItem.name} added!`);
+            showToast(`${pendingProduct.emoji} ${pendingProduct.name} (${size.label}) added!`);
         }
 
         function addToCartSimple() {
             if (!pendingProduct || pendingProduct.hasSizes) return;
-            const cartItem = {
+            cart.push({
                 id: Date.now(),
                 productId: pendingProduct.id,
                 name: pendingProduct.name,
@@ -840,16 +1343,16 @@
                 sizeLabel: null,
                 price: pendingProduct.price,
                 emoji: pendingProduct.emoji,
+                image: pendingProduct.image,
                 qty: modalQty
-            };
-            cart.push(cartItem);
+            });
             updateCart();
             closeSizeModal();
-            showToast(`${pendingProduct.emoji} ${cartItem.name} ×${cartItem.qty} added!`);
+            showToast(`${pendingProduct.emoji} ${pendingProduct.name} ×${modalQty} added!`);
         }
 
         function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
+            cart = cart.filter(i => i.id !== itemId);
             updateCart();
         }
 
@@ -857,19 +1360,16 @@
             const item = cart.find(i => i.id === itemId);
             if (!item) return;
             item.qty += delta;
-            if (item.qty <= 0) {
-                removeFromCart(itemId);
-            } else {
-                updateCart();
-            }
+            if (item.qty <= 0) removeFromCart(itemId);
+            else updateCart();
         }
 
         function clearCart() {
             if (cart.length === 0) return;
-            if (confirm('Are you sure you want to clear your cart?')) {
+            if (confirm('Clear your cart?')) {
                 cart = [];
                 updateCart();
-                showToast('Cart cleared! 🗑️');
+                showToast('Cart cleared!');
             }
         }
 
@@ -879,58 +1379,64 @@
         }
 
         function updateCartBadge() {
-            const count = cart.reduce((sum, item) => sum + item.qty, 0);
-            const badge = document.getElementById('cart-badge');
-            if (count > 0) {
-                badge.textContent = count;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
+            const count = cart.reduce((s, i) => s + i.qty, 0);
+            const badges = ['cart-badge', 'cart-badge-mobile'];
+
+            badges.forEach(id => {
+                const badge = document.getElementById(id);
+                if (badge) {
+                    if (count > 0) {
+                        badge.textContent = count;
+                        badge.classList.remove('hidden');
+                    } else {
+                        badge.classList.add('hidden');
+                    }
+                }
+            });
         }
 
         function renderCart() {
-            const itemsContainer = document.getElementById('cart-items');
+            const container = document.getElementById('cart-items');
             const footer = document.getElementById('cart-footer');
             const subtitle = document.getElementById('cart-subtitle');
 
-            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+            const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
 
             subtitle.textContent = `${totalQty} item${totalQty !== 1 ? 's' : ''}`;
 
             if (cart.length === 0) {
-                itemsContainer.innerHTML = `
-                    <div class="text-center py-12">
-                        <span class="text-6xl block mb-4" aria-hidden="true">🛒</span>
-                        <p class="text-gray-500 text-lg">Your cart is empty</p>
-                        <p class="text-gray-400 text-sm mt-2">Add some yummy items!</p>
+                container.innerHTML = `
+                    <div class="text-center py-12 md:py-16">
+                        <span class="text-5xl md:text-6xl" aria-hidden="true">🛒</span>
+                        <p class="text-gray-500 text-base md:text-lg mt-2">Your cart is empty</p>
+                        <p class="text-gray-400 text-sm mt-1">Add some yummy items!</p>
                     </div>
                 `;
                 footer.classList.add('hidden');
                 return;
             }
 
-            itemsContainer.innerHTML = cart.map(item => {
+            container.innerHTML = cart.map(item => {
                 const itemTotal = item.price * item.qty;
                 return `
-                    <div class="cart-item flex items-center gap-4 glass rounded-xl p-4 border border-white/10">
-                        <div class="text-3xl flex-shrink-0" aria-hidden="true">${item.emoji}</div>
+                    <div class="flex items-center gap-2 md:gap-3 glass rounded-lg md:rounded-xl p-2.5 md:p-3 border border-white/10 dark:border-white/5 hover:bg-white/10 dark:hover:bg-white/5 transition-colors">
+                        <div class="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                        </div>
                         <div class="flex-1 min-w-0">
-                            <h4 class="font-bold text-sm truncate">${item.name}</h4>
-                            <p class="text-pink-500 font-bold text-sm">₹${item.price} × ${item.qty}</p>
+                            <h4 class="font-bold text-xs md:text-sm truncate">${item.name}</h4>
+                            <p class="text-pink-500 font-bold text-[10px] md:text-xs">₹${item.price} × ${item.qty}</p>
                         </div>
-                        <div class="flex flex-col items-end gap-2">
-                            <div class="flex items-center gap-2">
-                                <button onclick="updateCartItemQty(${item.id}, -1)" class="w-7 h-7 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center justify-center text-sm font-bold" aria-label="Decrease quantity">−</button>
-                                <span class="font-bold w-6 text-center text-sm">${item.qty}</span>
-                                <button onclick="updateCartItemQty(${item.id}, 1)" class="w-7 h-7 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex items-center justify-center text-sm font-bold" aria-label="Increase quantity">+</button>
+                        <div class="flex flex-col items-end gap-1">
+                            <div class="flex items-center gap-1 md:gap-1.5">
+                                <button onclick="updateCartItemQty(${item.id}, -1)" class="qty-btn text-sm" aria-label="Decrease">−</button>
+                                <span class="font-bold w-5 md:w-6 text-center text-xs md:text-sm">${item.qty}</span>
+                                <button onclick="updateCartItemQty(${item.id}, 1)" class="qty-btn text-sm" aria-label="Increase">+</button>
                             </div>
-                            <span class="font-bold text-pink-500">₹${itemTotal}</span>
+                            <span class="font-bold text-pink-500 text-xs md:text-sm">₹${itemTotal}</span>
                         </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition-colors p-1 flex-shrink-0" title="Remove item" aria-label="Remove ${item.name} from cart">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                        </button>
+                        <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 p-1.5 transition-colors shrink-0" aria-label="Remove item">✕</button>
                     </div>
                 `;
             }).join('');
@@ -938,7 +1444,6 @@
             document.getElementById('summary-items').textContent = totalQty;
             document.getElementById('summary-subtotal').textContent = `₹${subtotal}`;
             document.getElementById('summary-total').textContent = `₹${subtotal}`;
-
             footer.classList.remove('hidden');
         }
 
@@ -950,82 +1455,103 @@
                 sidebar.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
                 requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        panel.classList.remove('translate-x-full');
-                    });
+                    panel.classList.remove('translate-x-full');
                 });
             } else {
                 panel.classList.add('translate-x-full');
                 document.body.style.overflow = '';
-                setTimeout(() => sidebar.classList.add('hidden'), 300);
+                setTimeout(() => sidebar.classList.add('hidden'), 350);
             }
         }
 
         function sendWhatsAppOrder() {
             if (cart.length === 0) return;
 
-            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-            const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+            const totalAmount = cart.reduce((s, i) => s + (i.price * i.qty), 0);
 
-            let message = `Hi Radha! 👋%0A%0AI want to place an order from *Radha Bakes* 🎂%0A%0A`;
-            message += `*Order Details:*%0A`;
-            message += `━━━━━━━━━━━━━━%0A`;
+            let message = `Hi Radha! 👋%0A%0AI want to place an order from *Radha Bakes* 🎂%0A%0A*Order Details:*%0A━━━━━━━━━━━━━━%0A`;
 
             cart.forEach((item, idx) => {
                 const lineTotal = item.price * item.qty;
                 message += `%0A${idx + 1}. ${item.emoji} *${item.name}*%0A   Qty: ${item.qty} × ₹${item.price} = *₹${lineTotal}*%0A`;
             });
 
-            message += `%0A━━━━━━━━━━━━━━%0A`;
-            message += `%0A*Total Items:* ${totalQty}`;
-            message += `%0A*Total Amount:* ₹${totalAmount}`;
-            message += `%0A%0APlease confirm my order! 💕%0AThank you for supporting homemade! 🏠`;
+            message += `%0A━━━━━━━━━━━━━━%0A%0A*Total Items:* ${totalQty}%0A*Total Amount:* ₹${totalAmount}%0A%0APlease confirm my order! 💕%0AThank you for supporting homemade! 🏠`;
 
-            const whatsappUrl = `https://wa.me/918087267039?text=${message}`;
-            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-
+            window.open(`https://wa.me/918087267039?text=${message}`, '_blank');
             showToast('Opening WhatsApp... 💬');
         }
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
-            const messageEl = document.getElementById('toast-message');
-            messageEl.textContent = msg;
+            const msgEl = document.getElementById('toast-message');
+
+            msgEl.textContent = msg;
 
             if (toastTimer) clearTimeout(toastTimer);
 
             toast.classList.remove('hidden');
-            toast.style.animation = 'none';
-            toast.offsetHeight;
-            toast.style.animation = 'slideIn 0.3s ease-out forwards';
+            toast.classList.add('toast-enter');
 
             toastTimer = setTimeout(() => {
                 toast.classList.add('hidden');
-                toast.style.animation = '';
+                toast.classList.remove('toast-enter');
                 toastTimer = null;
             }, 3000);
         }
 
+        let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
+            const currentScroll = window.scrollY;
+
+            if (currentScroll > 50) {
                 nav.classList.add('shadow-lg');
             } else {
                 nav.classList.remove('shadow-lg');
             }
+
+            lastScroll = currentScroll;
         }, { passive: true });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 const sizeModal = document.getElementById('size-modal');
                 const cartSidebar = document.getElementById('cart-sidebar');
+
                 if (!sizeModal.classList.contains('hidden')) {
                     closeSizeModal();
                 } else if (!cartSidebar.classList.contains('hidden')) {
                     toggleCart();
+                } else if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                    closeMobileMenu();
                 }
             }
         });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const cartPanel = document.getElementById('cart-panel');
+
+        cartPanel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        cartPanel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 100;
+            const diff = touchStartX - touchEndX;
+
+            if (diff > swipeThreshold && touchStartX > window.innerWidth * 0.6) {
+                toggleCart();
+            }
+        }
     </script>
 </body>
 </html>
